@@ -32,7 +32,6 @@ const Login = (props) => {
     }),
     onSubmit: valores => {
         iniciarSesion(valores)
-      //LoginAuth(valores)
     }
 });
     return (

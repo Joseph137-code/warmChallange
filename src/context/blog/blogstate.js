@@ -6,8 +6,8 @@ import clienteAxios          from '../../config/blog';
 import { 
     OBTENER_BLOGS,
     BLOG_ERROR,
-    /*AGREGAR_BLOG,
-    VALIDAR_BLOG,
+    AGREGAR_BLOG,
+    /*VALIDAR_BLOG,
     ELIMINAR_BLOG,
     BLOG_ACTUAL,
     ACTUALIZAR_BLOG,
@@ -47,7 +47,29 @@ const BlogState = props => {
         }
     }
 
+ // Agregar nuevo blog
+ const agregarBlog = async blog=> {
 
+    try {
+        const resultado = await clienteAxios.post('/posts', blog);
+        console.log(resultado);
+        // Insertar el blog en el state
+        dispatch({
+            type: AGREGAR_BLOG,
+            payload: resultado.data
+        })
+    } catch (error) {
+        const alerta = {
+            msg: 'Hubo un error',
+            categoria: 'alerta-error'
+        }
+        
+        dispatch({
+            type: BLOG_ERROR,
+            payload: alerta
+        })
+    }
+}
 
 
     return(
@@ -57,7 +79,8 @@ const BlogState = props => {
                 errorblog: state.errorblog,
                 blogseleccionado: state.blogseleccionado,
                 mensaje: state.mensaje,
-                obtenerBlogs 
+                obtenerBlogs,
+                agregarBlog,
             }}
         >{props.children}
 
