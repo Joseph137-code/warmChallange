@@ -7,9 +7,9 @@ import {
     OBTENER_BLOGS,
     BLOG_ERROR,
     AGREGAR_BLOG,
+    BLOG_ACTUAL,
     /*VALIDAR_BLOG,
     ELIMINAR_BLOG,
-    BLOG_ACTUAL,
     ACTUALIZAR_BLOG,
     LIMPIAR_BLOG,*/
 } from '../../types';
@@ -19,8 +19,8 @@ const BlogState = props => {
     const initialState = {
         blogs: [],
         errorblog: false,
-        blogseleccionado: null,
-        mensaje: null
+        mensaje: null,
+        blog: null
     }
 
     const [ state, dispatch ] = useReducer(BlogReducer, initialState);
@@ -71,6 +71,14 @@ const BlogState = props => {
     }
 }
 
+   // Selecciona el blog que el usuario dio click
+   const BlogActual = blog => {
+    dispatch({
+        type: BLOG_ACTUAL,
+        payload: blog
+    })
+}
+
 
     return(
         <BlogContext.Provider
@@ -79,8 +87,10 @@ const BlogState = props => {
                 errorblog: state.errorblog,
                 blogseleccionado: state.blogseleccionado,
                 mensaje: state.mensaje,
+                blog: state.blog,
                 obtenerBlogs,
                 agregarBlog,
+                BlogActual
             }}
         >{props.children}
 

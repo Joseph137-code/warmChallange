@@ -2,9 +2,9 @@ import {
     OBTENER_BLOGS,
     BLOG_ERROR,
     AGREGAR_BLOG,
+    BLOG_ACTUAL,
     /*VALIDAR_BLOG,
     ELIMINAR_BLOG,
-    BLOG_ACTUAL,
     ACTUALIZAR_BLOG,
     LIMPIAR_BLOG,*/
 } from '../../types';
@@ -23,6 +23,12 @@ export default (state, action) => {
                 ...state,
                 blogs: [...state.blogs, action.payload],
                 errorblog: false,
+            }
+        case BLOG_ACTUAL:
+            console.log(action.payload)
+            return {
+                ...state,
+                blog: state.blogs.filter(blog => blog === action.payload )
             }
         case BLOG_ERROR:
             return{

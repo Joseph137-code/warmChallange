@@ -49,19 +49,19 @@ const Formulario = () => {
                     <strong>Error!</strong> {formik.errors.contenido}
                   </div>
               ) : null}
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="contenido"
-                  placeholder="contenido"
-                  value={formik.values.contenido}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                <label htmlFor="floatingPassword">Contenido</label>
-              </div>
-              <button className="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+              <div className="mb-3">
+                    <label for="description" className="form-label">Contenido</label>
+                    <textarea 
+                      className="form-control" 
+                      type="text" 
+                      id="contenido"
+                      placeholder="contenido"
+                      value={formik.values.contenido}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur} 
+                      rows="5" required></textarea>
+                </div>
+              <button className="w-100 btn btn-lg btn-primary" type="submit">Crear Blog</button>
               <hr className="my-4" />
     
             </form>

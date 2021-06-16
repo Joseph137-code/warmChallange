@@ -6,12 +6,14 @@ import Home from "./pages/home";
 import Login from "./pages/login"
 import New from "./pages/newBlog"
 import './App.css';
+import Header from './components/header';
 
 function App() {
   return (
     <BlogState>
       <AuthState>
         <Router>
+          <Header/>
             <Switch>
             <Route exact path="/Home" component={Home} />
             <Route exact path="/" component={Login} />
