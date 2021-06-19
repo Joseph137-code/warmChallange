@@ -9,7 +9,6 @@ const Blog = ({blogs}) => {
     // Función para agregar el blog actual
     const seleccionarBlog = blog => {
         BlogActual(blog); // Fijar un blog actual
-    
     }
 
 

@@ -7,6 +7,7 @@ import Login from "./pages/login"
 import New from "./pages/newBlog"
 import './App.css';
 import Header from './components/header';
+import EditarBlog from './pages/editarBlog';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/Home" component={Home} />
             <Route exact path="/" component={Login} />
             <Route exact path="/Nuevo" component={New} />
+            <Route exact path="/Editar" component={EditarBlog} />
             </Switch>
         </Router>
       </AuthState>

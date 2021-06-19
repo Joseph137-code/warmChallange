@@ -9,4 +9,4 @@ export const VALIDAR_BLOG = 'VALIDAR_BLOG';
 export const ELIMINAR_BLOG = 'ELIMINAR_BLOG';
 export const BLOG_ACTUAL = 'BLOG_ACTUAL';
 export const ACTUALIZAR_BLOG = 'ACTUALIZAR_BLOG';
-export const LIMPIAR_BLOG = 'LIMPIAR_BLOG';
+export const EDITAR_BLOG = 'EDITAR_BLOG';

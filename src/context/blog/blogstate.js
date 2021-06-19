@@ -8,10 +8,9 @@ import {
     BLOG_ERROR,
     AGREGAR_BLOG,
     BLOG_ACTUAL,
-    /*VALIDAR_BLOG,
     ELIMINAR_BLOG,
     ACTUALIZAR_BLOG,
-    LIMPIAR_BLOG,*/
+    EDITAR_BLOG,
 } from '../../types';
 
 
@@ -20,7 +19,9 @@ const BlogState = props => {
         blogs: [],
         errorblog: false,
         mensaje: null,
-        blog: null
+        blog: null,
+        blogEdit:null,
+        blogEditado: null
     }
 
     const [ state, dispatch ] = useReducer(BlogReducer, initialState);
@@ -29,7 +30,6 @@ const BlogState = props => {
     const obtenerBlogs = async () => {
         try {
             const resultado = await clienteAxios.get('/posts');
-            console.log(resultado.data)
             dispatch({
                 type: OBTENER_BLOGS,
                 payload: resultado.data
@@ -49,10 +49,9 @@ const BlogState = props => {
 
  // Agregar nuevo blog
  const agregarBlog = async blog=> {
-
     try {
         const resultado = await clienteAxios.post('/posts', blog);
-        console.log(resultado);
+        console.log(resultado.data);
         // Insertar el blog en el state
         dispatch({
             type: AGREGAR_BLOG,
@@ -71,13 +70,67 @@ const BlogState = props => {
     }
 }
 
-   // Selecciona el blog que el usuario dio click
+// Selecciona el blog que el usuario dio click
    const BlogActual = blog => {
     dispatch({
         type: BLOG_ACTUAL,
         payload: blog
     })
+    }
+
+  // Elimina un blog
+  const eliminarBlog = async blogId => {
+    try {
+        await clienteAxios.delete(`/posts/${blogId}`);
+        dispatch({
+            type: ELIMINAR_BLOG,
+            payload: blogId
+        })
+    } catch (error) {
+        const alerta = {
+            msg: 'Hubo un error',
+            categoria: 'alerta-error'
+        }
+        
+        dispatch({
+            type: BLOG_ERROR,
+            payload: alerta
+        })
+    }
 }
+
+const formEditar = blog => {
+    console.log(blog)
+    dispatch({
+        type: EDITAR_BLOG,
+        payload: blog
+    })
+}
+
+// Actualizar un blogS
+const actualizarBlog = async blogId => {
+    console.log(blogId)
+    try {
+        const resultado = await  clienteAxios.put(`/posts/${blogId.id}`, blogId);
+        console.log(resultado)
+        dispatch({
+            type: ACTUALIZAR_BLOG,
+            payload: resultado.data
+        })
+    } catch (error) {
+        const alerta = {
+            msg: 'Hubo un error',
+            categoria: 'alerta-error'
+        }
+        
+        dispatch({
+            type: BLOG_ERROR,
+            payload: alerta
+        })
+    }
+}
+
+
 
 
     return(
@@ -85,12 +138,17 @@ const BlogState = props => {
             value={{
                 blogs: state.blogs,
                 errorblog: state.errorblog,
-                blogseleccionado: state.blogseleccionado,
+                blogEdit: state.blogEdit,
                 mensaje: state.mensaje,
                 blog: state.blog,
+                blogEditado: state.blogEditado,
                 obtenerBlogs,
                 agregarBlog,
-                BlogActual
+                BlogActual,
+                eliminarBlog,
+                formEditar,
+                actualizarBlog,
+
             }}
         >{props.children}
 
