@@ -30,14 +30,12 @@ const AuthState = props => {
                     password: `${valores.password }`
                 } ,
             })
-            console.log(response.data.token)
             localStorage.setItem('token', response.data.token);
             dispatch({
                 type: LOGIN_EXITOSO,
                 payload: response.data
             })
         } catch (error) {
-            console.log(error.response.data.error);
             const alerta = {
                 msg: error.response.data.error,
                 categoria: 'alerta-error'

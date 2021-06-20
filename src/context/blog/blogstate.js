@@ -39,7 +39,6 @@ const BlogState = props => {
                 msg: 'Hubo un error',
                 categoria: 'alerta-error'
             }
-            
             dispatch({
                 type: BLOG_ERROR,
                 payload: alerta
@@ -51,7 +50,6 @@ const BlogState = props => {
  const agregarBlog = async blog=> {
     try {
         const resultado = await clienteAxios.post('/posts', blog);
-        console.log(resultado.data);
         // Insertar el blog en el state
         dispatch({
             type: AGREGAR_BLOG,
@@ -62,7 +60,6 @@ const BlogState = props => {
             msg: 'Hubo un error',
             categoria: 'alerta-error'
         }
-        
         dispatch({
             type: BLOG_ERROR,
             payload: alerta
@@ -91,7 +88,6 @@ const BlogState = props => {
             msg: 'Hubo un error',
             categoria: 'alerta-error'
         }
-        
         dispatch({
             type: BLOG_ERROR,
             payload: alerta
@@ -100,7 +96,6 @@ const BlogState = props => {
 }
 
 const formEditar = blog => {
-    console.log(blog)
     dispatch({
         type: EDITAR_BLOG,
         payload: blog
@@ -109,10 +104,8 @@ const formEditar = blog => {
 
 // Actualizar un blogS
 const actualizarBlog = async blogId => {
-    console.log(blogId)
     try {
         const resultado = await  clienteAxios.put(`/posts/${blogId.id}`, blogId);
-        console.log(resultado)
         dispatch({
             type: ACTUALIZAR_BLOG,
             payload: resultado.data
@@ -122,7 +115,6 @@ const actualizarBlog = async blogId => {
             msg: 'Hubo un error',
             categoria: 'alerta-error'
         }
-        
         dispatch({
             type: BLOG_ERROR,
             payload: alerta

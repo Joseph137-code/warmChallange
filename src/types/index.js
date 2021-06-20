@@ -10,3 +10,6 @@ export const ELIMINAR_BLOG = 'ELIMINAR_BLOG';
 export const BLOG_ACTUAL = 'BLOG_ACTUAL';
 export const ACTUALIZAR_BLOG = 'ACTUALIZAR_BLOG';
 export const EDITAR_BLOG = 'EDITAR_BLOG';
+
+export const MOSTRAR_ALERTA = 'MOSTRAR_ALERTA';
+export const OCULTAR_ALERTA = 'OCULTAR_ALERTA';

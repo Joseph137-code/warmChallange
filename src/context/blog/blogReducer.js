@@ -18,27 +18,23 @@ export default (state, action) => {
                 errorblog: false,
             }
         case AGREGAR_BLOG:
-            console.log(action.payload)
             return{
                 ...state,
                 blogs: [...state.blogs, action.payload],
-                blog: action.payload,
+                blog: [action.payload],
                 errorblog: false,
             }
         case BLOG_ACTUAL:
-
             return {
                 ...state,
                 blog: state.blogs.filter(blog => blog === action.payload )
             }
         case EDITAR_BLOG:
-            console.log(action.payload)
             return {
                 ...state,
                 blogEdit: state.blogs.filter(blog => blog === action.payload )
             }
         case ACTUALIZAR_BLOG:
-            console.log(action.payload)
             return{
                 ...state,
                 blogEdit: null,
@@ -46,7 +42,6 @@ export default (state, action) => {
                 blog: [action.payload]
             }
         case ELIMINAR_BLOG:
-            console.log(action.payload)
             return{
                 ...state,
                 blogs: state.blogs.filter(blog => blog.id !== action.payload ),

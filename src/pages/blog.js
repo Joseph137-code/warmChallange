@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import BlogContext from '../context/blog/blogContext';
+import BlogContext           from '../context/blog/blogContext';
 
 const Blog = ({blogs}) => {
     // Extrar blog de state inicial
@@ -11,41 +11,20 @@ const Blog = ({blogs}) => {
         BlogActual(blog); // Fijar un blog actual
     }
 
-
     return (
         <div className="list-group mt-3">
             {blogs.map(blog => (
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     blog={blog}
-                    key={blog.id} 
+                    key={blog.id}
                     className="list-group-item list-group-item-action"
-                    onClick={ () => seleccionarBlog(blog) }
-                   
+                    onClick={() => seleccionarBlog(blog)}
+
                 >{blog.title}
                 </button>
-        
             ))}
-      
-        
         </div>
-
-
-
-
-
-        /*<ul>
-            
-        </ul>
-        
-        <li className="list-group-item">{blog.title}
-        <div>
-            <button type="button" className="btn btn-info">Detalles</button>
-                <button type="button" className="btn btn-danger">Eliminar</button>
-                <button type="button" className="btn btn-warning">Editar</button>
-            </div>
-                     
-        </li>*/
      );
 }
  

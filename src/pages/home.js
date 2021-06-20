@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
-import BlogActual from '../components/Blog';
-import BlogContext from '../context/blog/blogContext';
-import Blog from './blog';
-import Pagination from '../components/Paginacion';
+import React, { useState, 
+    useContext, useEffect } from 'react';
+import BlogActual           from '../components/Blog';
+import BlogContext          from '../context/blog/blogContext';
+import Blog                 from './blog';
+import Pagination           from '../components/Paginacion';
 
 const Home = () => {
     // Extrar blog de state inicial
@@ -11,20 +12,18 @@ const Home = () => {
 
     const [actualPagina, setActualPagina ] = useState(10);
     const [blogsPerPage] = useState(10);
-    // Obtener proyectos cuando carga el componente
-    useEffect(() => {
 
+    // Obtener Blog cuando carga el componente
+    useEffect(() => {
         obtenerBlogs();
         // eslint-disable-next-line
     }, []);
+
+    //Paginacion
     const indexOfLastPost = actualPagina * blogsPerPage;
     const indexOfFirstPost = indexOfLastPost - blogsPerPage;
-   
     const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
-  
     const paginate = pageNumber => setActualPagina(pageNumber);
-
-
 
     return (
         <div>
@@ -50,7 +49,6 @@ const Home = () => {
                 </div>
             </div>
         </div>
-
     );
 }
  
